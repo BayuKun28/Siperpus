@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-book"></i>
         </div>
@@ -11,30 +11,41 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider ">
+    <!-- Query Menu -->
+    <?php
+    $role_id = $this->session->userdata('role_id');
+    $queryMenu = " SELECT `user_menu`.`id`,`menu`
+                        FROM `user_menu` JOIN `user_access_menu`
+                        ON `user_menu`.`id` = `user_access_menu`.`menu_id`
+                        WHERE `user_access_menu`.`role_id` = $role_id
+                        ORDER BY `user_access_menu`.`menu_id` ASC ";
+    $menu = $this->db->Query($queryMenu)->result_array();
+
+    ?>
+    <!-- looping menu -->
     <!-- Heading -->
-    <div class="sidebar-heading">
-        Administrator
-    </div>
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
+    <?php foreach ($menu as $m) : ?>
+        <div class="sidebar-heading">
+            <?= $m['menu']; ?>
+        </div>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+        <?php
+        $menuid  = $m['id'];
+        $querysubmenu = " SELECT * FROM user_sub_menu where menu_id = $menuid and is_active=1";
+        $submenu = $this->db->query($querysubmenu)->result_array();
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        User
-    </div>
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-user"></i>
-            <span>My Profile</span></a>
-    </li>
+        ?>
+        <?php foreach ($submenu as $sm) : ?>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url($sm['url']); ?>">
+                    <i class="<?= $sm['icon'] ?>"></i>
+                    <span><?= $sm['title'] ?></span></a>
+            </li>
 
+        <?php endforeach ?>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+    <?php endforeach ?>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
             <i class="fas fa-fw fa-sign-out-alt"></i>
