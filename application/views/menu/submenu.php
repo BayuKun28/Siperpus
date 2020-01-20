@@ -14,7 +14,7 @@
                 </div>
             <?php endif; ?>
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New SubMenu</a>
-            <table class="table table-hover">
+            <table class="table table-hover col-sm">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
