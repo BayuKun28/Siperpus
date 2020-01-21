@@ -6,38 +6,55 @@
             <div class="card">
 
                 <div class="card-body ">
-                    <form>
+                    <?= $this->session->flashdata('message'); ?>
+                    <form method="post" action="<?= base_url('buku/addbuku'); ?>">
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Judul Buku" id="judul_buku" name="judul_buku">
+                                <b><label for="judul_buku">Judul Buku</label></b>
+                                <input type="text" class="form-control" placeholder="Judul Buku" id="judul_buku" name="judul_buku" value="<?= set_value('judul_buku'); ?>">
+                                <?= form_error('judul_buku', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="col">
+                                <b><label for="supplier">Nama Supplier</label></b>
                                 <select class="form-control" id="supplier" name="supplier">
                                     <option>------ Pilih Supplier ---------</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select> </div>
+                                    <?php foreach ($supplier as $s) : ?>
+                                        <option value="<?= $s['id']; ?>"><?= $s['nama_supplier']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <?= form_error('supplier', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                         </div><br>
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Pengarang" id="pengarang" name="pengarang">
+                                <b><label for="pengarang">Nama Pengarang</label></b>
+                                <input type="text" class="form-control" placeholder="Pengarang" id="pengarang" name="pengarang" value="<?= set_value('pengarang'); ?>">
+                                <?= form_error('pengarang', '<small class="text-danger pl-3">', '</small>'); ?>
+
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Penerbit" id="penerbit" name="penerbit">
+                                <b><label for="penerbit">Nama Penerbit</label></b>
+                                <input type="text" class="form-control" placeholder="Penerbit" id="penerbit" name="penerbit" value="<?= set_value('penerbit'); ?>">
+                                <?= form_error('penerbit', '<small class="text-danger pl-3">', '</small>'); ?>
+
                             </div>
                         </div><br>
                         <div class="form-row">
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="Tahun" id="tahun" name="tahun">
+                                <b><label for="tahun">Tahun Terbit</label></b>
+                                <input type="text" class="form-control" placeholder="Tahun" id="tahun" name="tahun" value="<?= set_value('tahun'); ?>">
+                                <?= form_error('tahun', '<small class="text-danger pl-3">', '</small>'); ?>
+
                             </div>
                             <div class="col">
+                                <b><label for="status">Status Buku</label></b>
                                 <select class="form-control" id="status" name="status">
-                                    <option value="">Status</option>
-                                    <option>Ada</option>
-                                    <option>Kosong</option>
+                                    <option>Status</option>
+                                    <option value="Ada">Ada</option>
+                                    <option value="Kosong">Kosong</option>
                                 </select>
+                                <?= form_error('ststus', '<small class="text-danger pl-3">', '</small>'); ?>
+
                             </div>
                         </div>
                 </div>
@@ -45,11 +62,11 @@
             <br>
 
             <div class="text-right">
-                <a href="#" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
+                <button type="submit" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
                     <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
                     <span class="btn-inner--text">Tambah Buku</span>
-                </a>
-                <a href="#" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
+                </button>
+                <a href=" <?= base_url('buku') ?>" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
                     <span class="btn-inner--icon"><i class="fas fa-reply"></i></span>
                     <span class="btn-inner--text">Kembali</span>
                 </a>

@@ -2,7 +2,6 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3 col">
@@ -31,6 +30,7 @@
                       <th>Penerbit</th>
                       <th>Tahun</th>
                       <th>Supplier</th>
+                      <th>Keterangan</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -45,6 +45,7 @@
                         <td><?= $b['penerbit']; ?></td>
                         <td><?= $b['tahun']; ?></td>
                         <td><?= $b['nama_supplier']; ?></td>
+                        <td><?= $b['ket']; ?></td>
                         <td><?= $b['status']; ?></td>
                       </tr>
                       <?php $i++; ?>
