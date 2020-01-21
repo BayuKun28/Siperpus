@@ -5,8 +5,20 @@
           <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Daftar Buku Di Perpustakaan</h6>
+            <div class="card-header py-3 col">
+              <div class="row">
+                <h6 class="m-0 font-weight-bold text-primary col-sm-12 col-md-8 ">Daftar Buku Di Perpustakaan</h6>
+                <div class=" col-sm-12 col-md-4 text-right">
+                  <a href="<?= base_url('buku/addbuku'); ?>" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
+                    <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
+                    <span class="btn-inner--text">Tambah</span>
+                  </a>
+                  <button class="btn btn-sm btn-round btn-icon btn-info" data-toggle="tooltip" data-original-title="Segarkan Data">
+                    <span class=" btn-inner--icon"><i class="fas fa-reply"></i></span>
+                    <span class="btn-inner--text">Refresh</span>
+                  </button>
+                </div>
+              </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
