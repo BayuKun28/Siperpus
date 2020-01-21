@@ -9,7 +9,8 @@ class Buku_model extends CI_Model
         tb.pengarang ,tb.penerbit ,tb.tahun , 
         s.nama_supplier ,tb.ket ,tb.status  
         FROM tb_buku tb 
-        LEFT JOIN supplier s on (s.id=tb.id_supplier)";
+        LEFT JOIN supplier s on (s.id=tb.id_supplier)
+        ORDER BY tb.id";
         return $this->db->query($query)->result_array();
     }
     public function getJmlBuku()

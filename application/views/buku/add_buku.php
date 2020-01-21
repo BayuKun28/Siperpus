@@ -17,7 +17,7 @@
                             <div class="col">
                                 <b><label for="supplier">Nama Supplier</label></b>
                                 <select class="form-control" id="supplier" name="supplier">
-                                    <option>------ Pilih Supplier ---------</option>
+                                    <option>Pilih Supplier </option>
                                     <?php foreach ($supplier as $s) : ?>
                                         <option value="<?= $s['id']; ?>"><?= $s['nama_supplier']; ?></option>
                                     <?php endforeach; ?>
@@ -53,7 +53,20 @@
                                     <option value="Ada">Ada</option>
                                     <option value="Kosong">Kosong</option>
                                 </select>
-                                <?= form_error('ststus', '<small class="text-danger pl-3">', '</small>'); ?>
+                                <?= form_error('status', '<small class="text-danger pl-3">', '</small>'); ?>
+
+                            </div>
+                        </div><br>
+                        <div class="form-row">
+                            <div class="col-lg-6">
+                                <b><label for="keterangan">Keterangan</label></b>
+                                <select class="form-control" id="ket" name="ket">
+                                    <option>Pilih Keterangan</option>
+                                    <option value="Sumbangan">Sumbangan</option>
+                                    <option value="Pembelian">Pembelian</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                                <?= form_error('ket', '<small class="text-danger pl-3">', '</small>'); ?>
 
                             </div>
                         </div>

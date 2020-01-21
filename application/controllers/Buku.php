@@ -32,6 +32,7 @@ class Buku extends CI_Controller
         $this->form_validation->set_rules('penerbit', 'Penerbit', 'trim|required');
         $this->form_validation->set_rules('tahun', 'tahun', 'trim|required');
         $this->form_validation->set_rules('status', 'Status', 'trim|required');
+        $this->form_validation->set_rules('ket', 'Keterangan', 'trim|required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -46,7 +47,8 @@ class Buku extends CI_Controller
                 'pengarang' => $this->input->post('pengarang', true),
                 'penerbit' => $this->input->post('penerbit', true),
                 'tahun' => $this->input->post('tahun', true),
-                'status' => $this->input->post('status', true)
+                'status' => $this->input->post('status', true),
+                'ket' => $this->input->post('ket', true)
             ];
             $this->db->insert('tb_buku', $bk);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Ditambah</div>');
