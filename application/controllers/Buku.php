@@ -55,4 +55,68 @@ class Buku extends CI_Controller
             redirect('buku/addbuku');
         }
     }
+    public function detail($idbuku)
+    {
+        $data['title'] = 'Detail Buku';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        // $data['detail'] = $this->db->get_where('tb_buku', ['id' => $idbuku])->row_array();
+
+        $this->load->model('Buku_model', 'buku');
+        $data['detail'] = $this->buku->getdetail(
+            $this->uri->segment(3)
+        );
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('buku/detail', $data);
+        $this->load->view('templates/footer', $data);
+    }
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('tb_buku');
+        redirect('buku');
+    }
+    public function edit()
+    {
+        $data['title'] = 'Edit Buku';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['supplier'] = $this->db->get('supplier')->result_array();
+        $this->load->model('Buku_model', 'buku');
+        $data['detail'] = $this->buku->getdetail(
+            $this->uri->segment(3)
+        );
+        $id = $this->uri->segment(3);
+        $this->form_validation->set_rules('judul_buku', 'Judul Buku', 'trim|required');
+        $this->form_validation->set_rules('pengarang', 'Nama Pengarang', 'trim|required');
+        $this->form_validation->set_rules('Penerbit', 'Nama Penerbit', 'trim|required');
+        $this->form_validation->set_rules('Tahun', 'Tahun', 'trim|required');
+        $this->form_validation->set_rules('supplier', 'Nama Supplier', 'trim|required');
+        $this->form_validation->set_rules('ket', 'Keterangan', 'trim|required');
+        $this->form_validation->set_rules('status', 'Status', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('buku/edit', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            // $up = [
+            $nama_buku =  $this->input->post('judul_buku');
+            $pengarang =  $this->input->post('pengarang');
+            $penerbit =  $this->input->post('penerbit');
+            $tahun = $this->input->post('tahun');
+            $status = $this->input->post('status');
+            $ket = $this->input->post('ket');
+            $this->db->set('nama_buku', $nama_buku);
+            $this->db->set('pengarang', $pengarang);
+            $this->db->set('penerbit', $penerbit);
+            $this->db->set('tahun', $tahun);
+            $this->db->set('status', $status);
+            $this->db->set('ket', $ket);
+            $this->db->where('id', $id);
+            $this->db->update('tb_buku');
+        }
+    }
 }
