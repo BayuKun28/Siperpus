@@ -67,11 +67,11 @@ class Supplier extends CI_Controller
     }
     public function edit()
     {
-        $data['title'] = 'Edit Buku';
+        $data['title'] = 'Edit Supplier';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['supplier'] = $this->db->get('supplier')->result_array();
-        $this->load->model('Buku_model', 'buku');
-        $data['detail'] = $this->buku->getdetail(
+        $this->load->model('Supplier_model', 'supplier');
+        $data['detail'] = $this->supplier->getdetail(
             $this->uri->segment(3)
         );
         $id = $this->uri->segment(3);
@@ -85,21 +85,16 @@ class Supplier extends CI_Controller
             $this->load->view('supplier/edit', $data);
             $this->load->view('templates/footer', $data);
         } else {
-            // $up = [
-            $nama_buku =  $this->input->post('judul_buku');
-            $pengarang =  $this->input->post('pengarang');
-            $penerbit =  $this->input->post('penerbit');
-            $tahun = $this->input->post('tahun');
-            $status = $this->input->post('status');
-            $ket = $this->input->post('ket');
-            $this->db->set('nama_buku', $nama_buku);
-            $this->db->set('pengarang', $pengarang);
-            $this->db->set('penerbit', $penerbit);
-            $this->db->set('tahun', $tahun);
-            $this->db->set('status', $status);
-            $this->db->set('ket', $ket);
+            $sup = [
+                'nama_supplier' => $this->input->post('nama_supplier'),
+                'alamat' => $this->input->post('alamat'),
+                'ket' => $this->input->post('ket')
+
+            ];
             $this->db->where('id', $id);
-            $this->db->update('tb_buku');
+            $this->db->update('supplier', $sup);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Perbarui</div>');
+            redirect('supplier/index');
         }
     }
 }

@@ -89,8 +89,8 @@ class Buku extends CI_Controller
         $id = $this->uri->segment(3);
         $this->form_validation->set_rules('judul_buku', 'Judul Buku', 'trim|required');
         $this->form_validation->set_rules('pengarang', 'Nama Pengarang', 'trim|required');
-        $this->form_validation->set_rules('Penerbit', 'Nama Penerbit', 'trim|required');
-        $this->form_validation->set_rules('Tahun', 'Tahun', 'trim|required');
+        $this->form_validation->set_rules('penerbit', 'Nama Penerbit', 'trim|required');
+        $this->form_validation->set_rules('tahun', 'Tahun', 'trim|required');
         $this->form_validation->set_rules('supplier', 'Nama Supplier', 'trim|required');
         $this->form_validation->set_rules('ket', 'Keterangan', 'trim|required');
         $this->form_validation->set_rules('status', 'Status', 'trim|required');
@@ -102,21 +102,21 @@ class Buku extends CI_Controller
             $this->load->view('buku/edit', $data);
             $this->load->view('templates/footer', $data);
         } else {
-            // $up = [
-            $nama_buku =  $this->input->post('judul_buku');
-            $pengarang =  $this->input->post('pengarang');
-            $penerbit =  $this->input->post('penerbit');
-            $tahun = $this->input->post('tahun');
-            $status = $this->input->post('status');
-            $ket = $this->input->post('ket');
-            $this->db->set('nama_buku', $nama_buku);
-            $this->db->set('pengarang', $pengarang);
-            $this->db->set('penerbit', $penerbit);
-            $this->db->set('tahun', $tahun);
-            $this->db->set('status', $status);
-            $this->db->set('ket', $ket);
+            $bk = [
+                'nama_buku' => $this->input->post('judul_buku'),
+                'id_supplier' => $this->input->post('supplier'),
+                'pengarang' => $this->input->post('pengarang'),
+                'penerbit' => $this->input->post('penerbit'),
+                'tahun' => $this->input->post('tahun'),
+                'status' => $this->input->post('status'),
+                'ket' => $this->input->post('ket')
+
+            ];
             $this->db->where('id', $id);
-            $this->db->update('tb_buku');
+            $this->db->update('tb_buku', $bk);
+            // $this->db->query($query)->result();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Buku Berhasil Di Perbarui..!</div>');
+            redirect('buku');
         }
     }
 }

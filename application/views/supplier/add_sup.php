@@ -36,7 +36,6 @@
                 </div>
             </div>
             <br>
-
             <div class="text-right">
                 <button type="submit" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
                     <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>

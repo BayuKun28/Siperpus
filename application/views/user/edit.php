@@ -38,11 +38,11 @@
                 <b><label for="role">Akses</label></b>
                 <select class="form-control" id="role" name="role">
                     <option value="<?php if ($user['role_id'] == 1) {
-                                        echo 'Administrator';
+                                        echo '1';
                                     } elseif ($user['role_id'] == 2) {
-                                        echo 'Member';
+                                        echo '2';
                                     } elseif ($user['role_id'] == 3) {
-                                        echo 'Pengunjung';
+                                        echo '3';
                                     } ?>"><?php if ($user['role_id'] == 1) {
                                                 echo 'Administrator';
                                             } elseif ($user['role_id'] == 2) {
@@ -60,11 +60,15 @@
             <div class="col">
                 <b><label for="aktif">Is Active</label></b>
                 <select class="form-control" id="aktif" name="aktif">
-                    <option><?php if ($user['is_active'] == 1) {
-                                echo 'Aktif';
-                            } else {
-                                echo 'Tidak Aktif';
-                            } ?></option>
+                    <option value="<?php if ($user['is_active'] == 1) {
+                                        echo '1';
+                                    } else {
+                                        echo '2';
+                                    } ?>"><?php if ($user['is_active'] == 1) {
+                                                echo 'Aktif';
+                                            } else {
+                                                echo 'Tidak Aktif';
+                                            } ?></option>
                     <option value="1">Aktif</option>
                     <option value="0">Tidak Aktif</option>
                 </select>

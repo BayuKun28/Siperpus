@@ -17,7 +17,7 @@
                             <div class="col">
                                 <b><label for="supplier">Nama Supplier</label></b>
                                 <select class="form-control" id="supplier" name="supplier">
-                                    <option <?= $detail['nama_supplier']; ?>><?= $detail['nama_supplier']; ?> </option>
+                                    <option value="<?= $detail['id']; ?>"><?= $detail['nama_supplier']; ?> </option>
                                     <?php foreach ($supplier as $s) : ?>
                                         <option value="<?= $s['id']; ?>"><?= $s['nama_supplier']; ?></option>
                                     <?php endforeach; ?>
@@ -61,7 +61,7 @@
                             <div class="col-lg-6">
                                 <b><label for="keterangan">Keterangan</label></b>
                                 <select class="form-control" id="ket" name="ket">
-                                    <option <?= $detail['ket']; ?>><?= $detail['ket']; ?></option>
+                                    <option value="<?= $detail['ket']; ?>"><?= $detail['ket']; ?></option>
                                     <option value="Sumbangan">Sumbangan</option>
                                     <option value="Pembelian">Pembelian</option>
                                     <option value="Lainnya">Lainnya</option>
