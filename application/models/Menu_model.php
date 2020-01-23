@@ -9,4 +9,10 @@ class Menu_model extends CI_Model
                     ";
         return $this->db->query($query)->result_array();
     }
+    public function getmenu($id)
+    {
+        $query = " SELECT * FROM user_menu where id = $id
+                ";
+        return $this->db->query($query)->row_array();
+    }
 }

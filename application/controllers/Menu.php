@@ -68,4 +68,42 @@ class Menu extends CI_Controller
         } else {
         }
     }
+    public function edit()
+    {
+        $data['title'] = 'Edit Menu Management';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->db->get('user_menu')->result_array();
+        $this->form_validation->set_rules('menu', 'Menu', 'trim|required');
+        $this->load->model('Menu_model', 'menu');
+        $data['detail'] = $this->menu->getmenu(
+            $this->uri->segment(3)
+        );
+        $id = $this->uri->segment(3);
+
+        $this->form_validation->set_rules('menu', 'Menu', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('menu/edit', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $up = [
+
+                'menu' => $this->input->post('menu')
+            ];
+            $this->db->where('id', $id);
+            $this->db->update('user_menu', $up);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Diperbarui.!</div>');
+            redirect('menu');
+        }
+    }
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('user_menu');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Dihapus.!</div>');
+        redirect('menu');
+    }
 }

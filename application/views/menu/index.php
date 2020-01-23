@@ -7,9 +7,9 @@
     <?= $this->session->flashdata('message'); ?>
 
     <div class="row">
-        <div class="col-lg-12   ">
+        <div class="col-lg-10">
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
-            <table class="table table-hover">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -24,8 +24,8 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $m['menu']; ?></td>
                             <td>
-                                <a href="" class="badge badge-success">edit</a>
-                                <a href="" class="badge badge-danger">delete</a>
+                                <a href="<?= base_url('menu/edit/') . $m['id']; ?>" class="badge badge-success">edit</a>
+                                <a href="<?= base_url('menu/delete/') . $m['id']; ?>" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
