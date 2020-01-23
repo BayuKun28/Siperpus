@@ -23,7 +23,7 @@ class Supplier extends CI_Controller
     {
         $data['title'] = 'Tambah Supplier';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->form_validation->set_rules('nama_suppplier', 'Nama Supplier', 'trim|required');
+        $this->form_validation->set_rules('nama_supplier', 'Nama Supplier', 'trim|required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
         $this->form_validation->set_rules('ket', 'Keterangan', 'trim|required');
         if ($this->form_validation->run() == false) {
@@ -62,8 +62,8 @@ class Supplier extends CI_Controller
     public function delete($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete('tb_buku');
-        redirect('buku');
+        $this->db->delete('supplier');
+        redirect('supplier');
     }
     public function edit()
     {
@@ -75,19 +75,14 @@ class Supplier extends CI_Controller
             $this->uri->segment(3)
         );
         $id = $this->uri->segment(3);
-        $this->form_validation->set_rules('judul_buku', 'Judul Buku', 'trim|required');
-        $this->form_validation->set_rules('pengarang', 'Nama Pengarang', 'trim|required');
-        $this->form_validation->set_rules('Penerbit', 'Nama Penerbit', 'trim|required');
-        $this->form_validation->set_rules('Tahun', 'Tahun', 'trim|required');
-        $this->form_validation->set_rules('supplier', 'Nama Supplier', 'trim|required');
+        $this->form_validation->set_rules('nama_supplier', 'Nama Supplier', 'trim|required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
         $this->form_validation->set_rules('ket', 'Keterangan', 'trim|required');
-        $this->form_validation->set_rules('status', 'Status', 'trim|required');
-
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('buku/edit', $data);
+            $this->load->view('supplier/edit', $data);
             $this->load->view('templates/footer', $data);
         } else {
             // $up = [

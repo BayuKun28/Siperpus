@@ -20,4 +20,17 @@ class Dashboard extends CI_Controller
         $this->load->view('dashboard/index', $data);
         $this->load->view('templates/footer', $data);
     }
+    public function pengunjung()
+    {
+        $data['title'] = 'Dashboard Pengunjung';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->db->get('user_menu')->result_array();
+        $this->load->model('Buku_model', 'buku');
+        $data['buku'] = $this->buku->getJmlBuku();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('dashboard/pengunjung', $data);
+        $this->load->view('templates/footer', $data);
+    }
 }

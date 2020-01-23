@@ -37,11 +37,19 @@
             <div class="col">
                 <b><label for="role">Akses</label></b>
                 <select class="form-control" id="role" name="role">
-                    <option><?php if ($user['role_id'] == 1) {
-                                echo 'Administrator';
-                            } elseif ($user['role_id'] == 2) {
-                                echo 'Member';
-                            } ?></option>
+                    <option value="<?php if ($user['role_id'] == 1) {
+                                        echo 'Administrator';
+                                    } elseif ($user['role_id'] == 2) {
+                                        echo 'Member';
+                                    } elseif ($user['role_id'] == 3) {
+                                        echo 'Pengunjung';
+                                    } ?>"><?php if ($user['role_id'] == 1) {
+                                                echo 'Administrator';
+                                            } elseif ($user['role_id'] == 2) {
+                                                echo 'Member';
+                                            } elseif ($user['role_id'] == 3) {
+                                                echo 'Pengunjung';
+                                            } ?></option>
                     <?php foreach ($role as $r) : ?>
                         <option value="<?= $r['id']; ?>"><?= $r['role']; ?></option>
                     <?php endforeach; ?>
@@ -64,19 +72,18 @@
 
             </div>
         </div>
-</div>
-</div>
-<br>
 
-<div class="text-right">
-    <button type="submit" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Update Profile">
-        <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
-        <span class="btn-inner--text">Update Profile</span>
-    </button>
-    <a href=" <?= base_url('buku') ?>" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
-        <span class="btn-inner--icon"><i class="fas fa-reply"></i></span>
-        <span class="btn-inner--text">Kembali</span>
-    </a>
+        <br>
+        <div class="text-right">
+            <button type="submit" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Update Profile">
+                <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
+                <span class="btn-inner--text">Update Profile</span>
+            </button>
+            <a href=" <?= base_url('buku') ?>" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
+                <span class="btn-inner--icon"><i class="fas fa-reply"></i></span>
+                <span class="btn-inner--text">Kembali</span>
+            </a>
+        </div>
     </form>
 
     <!-- /.container-fluid -->
