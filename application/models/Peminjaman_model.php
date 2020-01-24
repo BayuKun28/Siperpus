@@ -12,4 +12,13 @@ class Peminjaman_model extends CI_Model
          ORDER BY tp.id ASC ";
         return $this->db->query($query)->result_array();
     }
+    public function getpeminjam()
+    {
+        $query = "SELECT * FROM user WHERE role_id <> 1";
+        return $this->db->query($query)->result_array();
+    }
+    public function getbuku()
+    {
+        $query = "SELECT * FROM tb_buku where status ilike '%ada%' ";
+    }
 }
