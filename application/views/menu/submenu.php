@@ -24,8 +24,6 @@
                         <th scope="col">Icon</th>
                         <th scope="col">Active</th>
                         <th scope="col">Action</th>
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -39,8 +37,8 @@
                             <td><?= $sm['icon']; ?></td>
                             <td><?= $sm['is_active']; ?></td>
                             <td>
-                                <a href="" class="badge badge-success">edit</a>
-                                <a href="<?= base_url('menu/deletesubmenu') ?>" class="badge badge-danger">delete</a>
+                                <a href="<?= base_url('menu/editsub/') . $sm['id']; ?>" class="badge badge-success">edit</a>
+                                <a href="<?= base_url('menu/deletesub/') . $sm['id']; ?>" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

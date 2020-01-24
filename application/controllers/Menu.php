@@ -58,14 +58,47 @@ class Menu extends CI_Controller
             redirect('menu/submenu');
         }
     }
-    public function deletesubmenu()
+    public function deletesub($id)
     {
+        $this->db->where('id', $id);
+        $this->db->delete('user_sub_menu');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Dihapus.!</div>');
+        redirect('menu/submenu');
+    }
+    public function editsub()
+    {
+        $data['title'] = 'Edit Sub Menu Management';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->db->get('user_menu')->result_array();
+        $this->load->model('Menu_model', 'menu');
+        $data['detail'] = $this->menu->getSubMenuDet(
+            $this->uri->segment(3)
+        );
         $id = $this->uri->segment(3);
-        $this->load->model('M_submenu', 'submenu');
-        $proses = $this->M_submenu->delete($id);
-        if (!$proses) {
-            redirect('menu/submenu');
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+        $this->form_validation->set_rules('menu', 'Menu', 'trim|required');
+        $this->form_validation->set_rules('url', 'URL', 'trim|required');
+        $this->form_validation->set_rules('icon', 'Icon', 'trim|required');
+        $this->form_validation->set_rules('active', 'Active', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('menu/editsub', $data);
+            $this->load->view('templates/footer', $data);
         } else {
+            $up = [
+                'title' => $this->input->post('title'),
+                'menu_id' => $this->input->post('menu'),
+                'url' => $this->input->post('url'),
+                'icon' => $this->input->post('icon'),
+                'is_active' => $this->input->post('active')
+            ];
+            $this->db->where('id', $id);
+            $this->db->update('user_sub_menu', $up);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Diperbarui.!</div>');
+            redirect('menu/submenu');
         }
     }
     public function edit()

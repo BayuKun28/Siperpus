@@ -2,7 +2,13 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard') ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php if ($user['role_id'] == 1) {
+                                                                                        base_url('dashboard');
+                                                                                    } elseif ($user['role_id'] == 2) {
+                                                                                        base_url('dashboard');
+                                                                                    } elseif ($user['role_id'] == 3) {
+                                                                                        base_url('dashboard/pengunjung');
+                                                                                    } ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-book"></i>
         </div>
