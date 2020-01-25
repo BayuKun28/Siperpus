@@ -35,7 +35,7 @@ class Peminjaman_model extends CI_Model
         $this->db->limit(10);
         $this->db->from('user');
         $this->db->like('name', $peminjam);
-        // $this->db->where('role_id', '2');
+        $this->db->where('role_id', '2');
         return $this->db->get()->result_array();
     }
 }

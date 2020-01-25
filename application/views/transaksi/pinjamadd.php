@@ -10,13 +10,13 @@
                     <form method="post" action="<?= base_url('transaksi/pinjamadd'); ?>">
                         <div class="form-row">
                             <div class="col">
-                                <b><label for="nama_peminjam">Nama Peminjam</label></b>
-                                <select class="form-control itemNamepeminjam" id="nama_buku" name="nama_buku">
+                                <b><label for="nama_peminjam">Nama Peminjam</label></b><br>
+                                <select class="form-control itemNamepeminjam" id="nama_peminjam" name="nama_peminjam">
                                 </select>
                                 <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="col">
-                                <b><label for="nama_buku">Nama Buku</label></b>
+                                <b><label for="nama_buku">Nama Buku</label></b><br>
                                 <select class="form-control itemNamebuku" id="nama_buku" name="nama_buku">
                                 </select>
                                 <?= form_error('nam_buku', '<small class="text-danger pl-3">', '</small>'); ?>
