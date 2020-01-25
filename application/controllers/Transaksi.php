@@ -41,7 +41,7 @@ class Transaksi extends CI_Controller
                 'tanggal_harus_kembali' => $this->input->post('tanggal_harus_kembali')
             ];
             $this->db->insert('tb_peminjaman', $ins);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Perbarui</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Tambah</div>');
             redirect('transaksi/peminjaman');
         }
     }

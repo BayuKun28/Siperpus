@@ -127,7 +127,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.tanggal').datepicker({
-            format: "dd-mm-yyyy",
+            format: "yyyy-mm-dd",
             autoclose: true
         });
     });
