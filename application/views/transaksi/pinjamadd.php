@@ -11,15 +11,17 @@
                         <div class="form-row">
                             <div class="col">
                                 <b><label for="nama_peminjam">Nama Peminjam</label></b>
-                                <select class="form-control" id="nama_peminjam" name="nama_peminjam">
-                                    <option>Pilih Peminjam</option>
-                                    <?php foreach ($peminjam as $p) : ?>
-                                        <option value="<?= $p['id']; ?>"><?= $p['name']; ?></option>
-                                    <?php endforeach; ?>
+                                <select class="form-control itemNamepeminjam" id="nama_buku" name="nama_buku">
                                 </select>
                                 <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="col">
+                                <b><label for="nama_buku">Nama Buku</label></b>
+                                <select class="form-control itemNamebuku" id="nama_buku" name="nama_buku">
+                                </select>
+                                <?= form_error('nam_buku', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <!-- <div class="col">
                                 <b><label for="nama_buku">Nama Buku</label></b>
                                 <select class="form-control" id="nama_buku" name="nama_buku">
                                     <option>Pilih Buku </option>
@@ -28,7 +30,7 @@
                                     <?php endforeach; ?>
                                 </select>
                                 <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
+                            </div> -->
                         </div><br>
                         <div class="form-row">
 

@@ -28,4 +28,18 @@ class Transaksi extends CI_Controller
         $this->load->view('transaksi/pinjamadd', $data);
         $this->load->view('templates/footer', $data);
     }
+    public function getdatabuku()
+    {
+        $buk = $this->input->get('buk');
+        $this->load->model('Peminjaman_model', 'pinjam');
+        $query = $this->pinjam->getbukuselect2($buk, 'nama_buku');
+        echo json_encode($query);
+    }
+    public function getdatapeminjam()
+    {
+        $peminjam = $this->input->get('peminjam');
+        $this->load->model('Peminjaman_model', 'pinjam');
+        $query = $this->pinjam->getpeminjamselect2($peminjam, 'name');
+        echo json_encode($query);
+    }
 }

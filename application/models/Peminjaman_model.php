@@ -21,4 +21,21 @@ class Peminjaman_model extends CI_Model
     {
         $query = "SELECT * FROM tb_buku where status ilike '%ada%' ";
     }
+    public function getbukuselect2($buk)
+    {
+        $this->db->select('*');
+        $this->db->limit(10);
+        $this->db->from('tb_buku');
+        $this->db->like('nama_buku', $buk);
+        return $this->db->get()->result_array();
+    }
+    public function getpeminjamselect2($peminjam)
+    {
+        $this->db->select('*');
+        $this->db->limit(10);
+        $this->db->from('user');
+        $this->db->like('name', $peminjam);
+        // $this->db->where('role_id', '2');
+        return $this->db->get()->result_array();
+    }
 }

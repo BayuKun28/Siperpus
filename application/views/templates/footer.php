@@ -40,6 +40,7 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery/jquery.min.js"></script>
+<script src="htpps://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -55,6 +56,60 @@
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 <script src="<?= base_url('assets/'); ?>js/sweetalert.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/bootstrap-datepicker.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+    $('.itemNamebuku').select2({
+        ajax: {
+            url: "<?= base_url(); ?>/transaksi/getdatabuku",
+            dataType: "json",
+            delay: 250,
+            data: function(params) {
+                return {
+                    buk: params.term
+                };
+            },
+            processResults: function(data) {
+                var results = [];
+                $.each(data, function(index, item) {
+                    results.push({
+                        id: item.id,
+                        text: item.nama_buku
+                    });
+                });
+                return {
+                    results: results
+                }
+            }
+        }
+    });
+</script>
+<script type="text/javascript">
+    $('.itemNamepeminjam').select2({
+        ajax: {
+            url: "<?= base_url(); ?>/transaksi/getdatapeminjam",
+            dataType: "json",
+            delay: 250,
+            data: function(params) {
+                return {
+                    peminjam: params.term
+                };
+            },
+            processResults: function(data) {
+                var results = [];
+                $.each(data, function(index, item) {
+                    results.push({
+                        id: item.id,
+                        text: item.name
+                    });
+                });
+                return {
+                    results: results
+                }
+            }
+        }
+    });
+</script>
+
 <script>
     swal({
             title: "Are you sure?",
