@@ -31,50 +31,25 @@
                             </div>
                         </div><br>
                         <div class="form-row">
-                            <div class="col">
-                                <b><label for="pengarang">Nama Pengarang</label></b>
-                                <input type="text" class="form-control" placeholder="Pengarang" id="pengarang" name="pengarang" value="<?= set_value('pengarang'); ?>">
-                                <?= form_error('pengarang', '<small class="text-danger pl-3">', '</small>'); ?>
 
+                            <div class="col">
+                                <b><label for="tanggal_pinjam">Tanggal Pinjam</label></b>
+                                <input type="text" name="tanggal_pinjam" class="form-control tanggal" />
+                                <?= form_error('tanggal_pinjam', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="col">
-                                <b><label for="penerbit">Nama Penerbit</label></b>
-                                <input type="text" class="form-control" placeholder="Penerbit" id="penerbit" name="penerbit" value="<?= set_value('penerbit'); ?>">
-                                <?= form_error('penerbit', '<small class="text-danger pl-3">', '</small>'); ?>
-
+                                <b><label for="tanggal_harus_kembali">Tanggal Harus Kembali</label></b>
+                                <input type="text" name="tanggal_harus_kembali" class="form-control tanggal" />
+                                <?= form_error('tanggal_harus_kembali', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div><br>
                         <div class="form-row">
-                            <div class="col-6">
-                                <b><label for="tahun">Tahun Terbit</label></b>
-                                <input type="text" class="form-control" placeholder="Tahun" id="tahun" name="tahun" value="<?= set_value('tahun'); ?>">
-                                <?= form_error('tahun', '<small class="text-danger pl-3">', '</small>'); ?>
-
-                            </div>
-                            <div class="col">
-                                <b><label for="status">Status Buku</label></b>
-                                <select class="form-control" id="status" name="status">
-                                    <option>Status</option>
-                                    <option value="Ada">Ada</option>
-                                    <option value="Kosong">Kosong</option>
-                                </select>
-                                <?= form_error('status', '<small class="text-danger pl-3">', '</small>'); ?>
-
-                            </div>
-                        </div><br>
-                        <div class="form-row">
-                            <div class="col-lg-6">
-                                <b><label for="keterangan">Keterangan</label></b>
-                                <select class="form-control" id="ket" name="ket">
-                                    <option>Pilih Keterangan</option>
-                                    <option value="Sumbangan">Sumbangan</option>
-                                    <option value="Pembelian">Pembelian</option>
-                                    <option value="Lainnya">Lainnya</option>
-                                </select>
-                                <?= form_error('ket', '<small class="text-danger pl-3">', '</small>'); ?>
-
+                            <div class="form-group col">
+                                <label for="catatan">Catatan</label>
+                                <textarea class="form-control" id="catatan" name="catatan" rows="3"></textarea>
                             </div>
                         </div>
+
                 </div>
             </div>
             <br>

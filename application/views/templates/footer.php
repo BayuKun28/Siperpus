@@ -54,6 +54,7 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 <script src="<?= base_url('assets/'); ?>js/sweetalert.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/bootstrap-datepicker.js"></script>
 <script>
     swal({
             title: "Are you sure?",
@@ -67,6 +68,14 @@
         function() {
             swal("Deleted!", "Your imaginary file has been deleted.", "success");
         });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.tanggal').datepicker({
+            format: "dd-mm-yyyy",
+            autoclose: true
+        });
+    });
 </script>
 </body>
 
