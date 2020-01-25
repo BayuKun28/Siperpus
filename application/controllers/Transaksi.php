@@ -22,11 +22,28 @@ class Transaksi extends CI_Controller
         $this->load->model('Peminjaman_model', 'pinjam');
         $data['peminjam'] = $this->pinjam->getpeminjam();
         $data['buku'] = $this->db->get('tb_buku')->result_array();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('transaksi/pinjamadd', $data);
-        $this->load->view('templates/footer', $data);
+        $this->form_validation->set_rules('nama_peminjam', 'Nama Peminjam', 'trim|required');
+        $this->form_validation->set_rules('nama_buku', 'Nama Buku', 'trim|required');
+        $this->form_validation->set_rules('tanggal_pinjam', 'Tanggal Pinjam', 'trim|required');
+        $this->form_validation->set_rules('tanggal_harus_kembali', 'Tanggal Harus Kembali', 'trim|required');
+        $this->form_validation->set_rules('nama_peminjam', 'Nama Peminjam', 'trim|required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('transaksi/pinjamadd', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $ins = [
+                'id_peminjam' => $this->input->post('nama_peminjam'),
+                'id_buku' => $this->input->post('nama_buku'),
+                'tanggal_pinjam' => $this->input->post('tanggal_pinjam'),
+                'tanggal_harus_kembali' => $this->input->post('tanggal_harus_kembali')
+            ];
+            $this->db->insert('tb_peminjaman', $ins);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Perbarui</div>');
+            redirect('transaksi/peminjaman');
+        }
     }
     public function getdatabuku()
     {

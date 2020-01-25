@@ -10,8 +10,8 @@
                     <form method="post" action="<?= base_url('transaksi/pinjamadd'); ?>">
                         <div class="form-row">
                             <div class="col">
-                                <b><label for="nama_peminjam">Nama Peminjam</label></b><br>
-                                <select class="form-control itemNamepeminjam" id="nama_peminjam" name="nama_peminjam">
+                                <b><label for="nama_peminjam">Nama Peminjam</label></b>
+                                <br> <select class="form-control itemNamepeminjam" id="nama_peminjam" name="nama_peminjam">
                                 </select>
                                 <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -21,16 +21,6 @@
                                 </select>
                                 <?= form_error('nam_buku', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <!-- <div class="col">
-                                <b><label for="nama_buku">Nama Buku</label></b>
-                                <select class="form-control" id="nama_buku" name="nama_buku">
-                                    <option>Pilih Buku </option>
-                                    <?php foreach ($buku as $b) : ?>
-                                        <option value="<?= $b['id']; ?>"><?= $b['nama_buku']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div> -->
                         </div><br>
                         <div class="form-row">
 

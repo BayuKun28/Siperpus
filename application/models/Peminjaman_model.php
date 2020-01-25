@@ -27,6 +27,7 @@ class Peminjaman_model extends CI_Model
         $this->db->limit(10);
         $this->db->from('tb_buku');
         $this->db->like('nama_buku', $buk);
+        $this->db->like('status', 'ada');
         return $this->db->get()->result_array();
     }
     public function getpeminjamselect2($peminjam)
