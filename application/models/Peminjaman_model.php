@@ -52,7 +52,7 @@ class Peminjaman_model extends CI_Model
     }
     public function getkembali()
     {
-        $query = "SELECT tpk.id, u.name ,tb.nama_buku,
+        $query = "SELECT tpk.id, u.name as nama_peminjam,tb.nama_buku,
          tp.tanggal_pinjam ,tp.tanggal_harus_kembali,tp.catatan,
          tpk.tgl_kembali,tpk.denda FROM tb_pengembalian tpk JOIN 
          tb_peminjaman tp on (tp.id=tpk.id_pinjam) JOIN user u on 

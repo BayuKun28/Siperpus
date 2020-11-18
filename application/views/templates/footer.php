@@ -57,6 +57,7 @@
 <script src="<?= base_url('assets/'); ?>js/sweetalert.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/bootstrap-datepicker.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
     $('.itemNamebuku').select2({
         ajax: {
@@ -111,18 +112,8 @@
 </script>
 
 <script>
-    swal({
-            title: "Are you sure?",
-            text: "Your will not be able to recover this imaginary file!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
-            closeOnConfirm: false
-        },
-        function() {
-            swal("Deleted!", "Your imaginary file has been deleted.", "success");
-        });
+function sweet (){
+swal("Good job!", "You clicked the button!", "success");
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
