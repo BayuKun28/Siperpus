@@ -52,8 +52,7 @@
                         <td>
                           <a href="<?= base_url('buku/detail/') . $b['id']; ?>" class="badge badge-warning">Detail</a>
                           <a href="<?= base_url('buku/edit/') . $b['id']; ?>" class="badge badge-success" onclick="swal()">edit</a>
-                          <!-- <a href="<?= base_url('buku/delete/') . $b['id']; ?>" class="badge badge-danger">delete</a> -->
-                          <button type="submit" class="badge badge-danger" onclick="sweet();">delete</button>
+                          <a href="<?= base_url('buku/delete/') . $b['id']; ?>" class="badge badge-danger">delete</a>
                         </td>
                       </tr>
                       <?php $i++; ?>
@@ -69,4 +68,3 @@
 
         </div>
         <!-- End of Main Content -->
-        

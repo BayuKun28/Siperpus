@@ -47,6 +47,7 @@
                                         <td><?= $p['catatan']; ?></td>
                                         <td>
                                             <a href="<?= base_url('transaksi/detail/') . $p['id']; ?>" class="badge badge-warning">Detail</a>
+                                            <a href="<?= base_url('transaksi/detailkembali/') . $p['id']; ?>" class="badge badge-success">Kembalikan</a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

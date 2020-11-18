@@ -76,6 +76,21 @@ class Transaksi extends CI_Controller
         $this->load->view('transaksi/detail', $data);
         $this->load->view('templates/footer', $data);
     }
+    public function detailkembali()
+    {
+        $data['title'] = 'Pengembalian';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Pengembalian_model', 'kembali');
+        $data['detail'] = $this->kembali->getdetailkembali(
+            $this->uri->segment(3)
+        );
+        $data['buku'] = $this->db->get('tb_buku')->result_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('transaksi/detailkembali', $data);
+        $this->load->view('templates/footer', $data);
+    }
     public function pengembalian()
     {
         $data['title'] = 'Pengembalian';
