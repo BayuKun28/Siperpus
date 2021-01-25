@@ -34,6 +34,7 @@ class Buku extends CI_Controller
         $this->form_validation->set_rules('pengarang', 'Pengarang', 'trim|required');
         $this->form_validation->set_rules('penerbit', 'Penerbit', 'trim|required');
         $this->form_validation->set_rules('tahun', 'tahun', 'trim|required');
+        $this->form_validation->set_rules('stok', 'stok', 'trim|required');
         $this->form_validation->set_rules('status', 'Status', 'trim|required');
         $this->form_validation->set_rules('ket', 'Keterangan', 'trim|required');
 
@@ -51,6 +52,7 @@ class Buku extends CI_Controller
                 'penerbit' => $this->input->post('penerbit', true),
                 'tahun' => $this->input->post('tahun', true),
                 'status' => $this->input->post('status', true),
+                'stok' => $this->input->post('stok', true),
                 'ket' => $this->input->post('ket', true)
             ];
             $this->db->insert('tb_buku', $bk);

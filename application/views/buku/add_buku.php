@@ -58,7 +58,15 @@
                             </div>
                         </div><br>
                         <div class="form-row">
-                            <div class="col-lg-6">
+                            <div class="col-6">
+                                <b><label for="stok">Stok Buku</label></b>
+                                <div class="number-input md-number-input">
+                                <input class="form-control" min="0" name="stok" value="<?= set_value('stok'); ?>" type="number">
+                                <?= form_error('stok', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+
+                            <div class="col">
                                 <b><label for="keterangan">Keterangan</label></b>
                                 <select class="form-control" id="ket" name="ket">
                                     <option>Pilih Keterangan</option>
@@ -69,10 +77,8 @@
                                 <?= form_error('ket', '<small class="text-danger pl-3">', '</small>'); ?>
 
                             </div>
-                        </div>
-                </div>
-            </div>
-            <br>
+                        
+            </div><br>
 
             <div class="text-right">
                 <button type="submit" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">

@@ -111,17 +111,53 @@
     });
 </script>
 
-<script>
-function sweet (){
-swal("Good job!", "You clicked the button!", "success");
-</script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.tanggal').datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true
-        });
-    });
+          $('#databuku').on('click','.hapus-buku', function () {
+            var id =  $(this).data('id');
+            swal({
+                title: 'Konfirmasi',
+                text: "Anda ingin menghapus ",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Hapus',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true
+              }).then((result) => {
+                if (result.value) {
+                  $.ajax({
+                    url:"<?=base_url('/buku/delete')?>",  
+                    method:"post",
+                    beforeSend :function () {
+                    swal({
+                        title: 'Menunggu',
+                        html: 'Memproses data',
+                        onOpen: () => {
+                          swal.showLoading()
+                        }
+                      })      
+                    },    
+                    data:{id:id},
+                    success:function(data){
+                      swal(
+                        'Hapus',
+                        'Berhasil Terhapus',
+                        'success'
+                      )
+                      databuku.ajax.reload(null, false)
+                    }
+                  })
+              } else if (result.dismiss === swal.DismissReason.cancel) {
+                  swal(
+                    'Batal',
+                    'Anda membatalkan penghapusan',
+                    'error'
+                  )
+                }
+              })
+            });
+    
 </script>
 </body>
 

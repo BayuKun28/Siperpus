@@ -7,7 +7,7 @@ class Buku_model extends CI_Model
     {
         $query = " SELECT tb.id ,tb.nama_buku ,
         tb.pengarang ,tb.penerbit ,tb.tahun , 
-        s.nama_supplier ,tb.ket ,tb.status  
+        s.nama_supplier ,tb.ket ,tb.status,tb.stok  
         FROM tb_buku tb 
         LEFT JOIN supplier s on (s.id=tb.id_supplier)
         ORDER BY tb.id";

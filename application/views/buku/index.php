@@ -37,6 +37,7 @@
                       <th>Supplier</th>
                       <th>Keterangan</th>
                       <th>Status</th>
+                      <th>Stok</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -53,10 +54,11 @@
                         <td><?= $b['nama_supplier']; ?></td>
                         <td><?= $b['ket']; ?></td>
                         <td><?= $b['status']; ?></td>
+                        <td><?= $b['stok']; ?></td>
                         <td>
-                          <a href="<?= base_url('buku/detail/') . $b['id']; ?>" class="badge badge-warning">Detail</a>
+                          <a href="<?= base_url('buku/detail/') . $b['id']; ?>" class="badge badge-warning ">Detail</a>
                           <a href="<?= base_url('buku/edit/') . $b['id']; ?>" class="badge badge-success" onclick="swal()">edit</a>
-                          <a href="<?= base_url('buku/delete/') . $b['id']; ?>" class="badge badge-danger">delete</a>
+                          <a href="<?= base_url('buku/delete/') . $b['id']; ?>"  id="databuku" class="badge badge-danger hapus-buku databuku">delete</a>
                         </td>
                       </tr>
                       <?php $i++; ?>

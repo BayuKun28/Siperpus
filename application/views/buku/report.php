@@ -24,7 +24,7 @@
 					<td align="center">Tahun</td>
 					<td align="center">Supplier</td>
 					<td align="center">Keterangan</td>
-					<td align="center">Status</td>	
+					<td align="center">Stok</td>	
 				</tr>
 			</thead>
 			<tbody>
@@ -38,7 +38,7 @@
                         <td align="center"><?= $b['tahun']; ?></td>
                         <td ><?= $b['nama_supplier']; ?></td>
                         <td align="center"><?= $b['ket']; ?></td>
-                        <td align="center"><?= $b['status']; ?></td>
+                        <td align="center"><?= $b['stok']; ?></td>
                       </tr>
                       <?php $i++; ?>
                     <?php endforeach ?>
